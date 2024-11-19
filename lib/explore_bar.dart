@@ -51,25 +51,36 @@ class _ExploreAppBarState extends State<ExploreAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    final screenHeight = MediaQuery.of(context).size.height;
+    final appBarHeight = screenHeight * 0.2;
+
+    return SliverAppBar(
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        centerTitle: true,
-        toolbarHeight: 200,
-        flexibleSpace: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        pinned: false,
+        floating: false,
+        snap: false,
+        expandedHeight: appBarHeight,
+        flexibleSpace: FlexibleSpaceBar(
+          background: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const Text('Explore', style: AppTextStyles.h2),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: TextButton(
+                Image.asset('images/logo.png', height: 20, width: 24),
+                const SizedBox(width: 20),
+                const Text('Explore', style: AppTextStyles.h2),             
+                ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
                           onPressed: () => _onButtonPressed('Art', '/'),
                               // Navigate to Art page, and change button state
                           style: TextButton.styleFrom(
@@ -87,12 +98,7 @@ class _ExploreAppBarState extends State<ExploreAppBar> {
                             ),
                           child: const Text('Art'),
                           ),
-                        ),
-                      ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: TextButton(
+                    TextButton(
                          onPressed: () => _onButtonPressed('People', '/people'),
                           style: TextButton.styleFrom(
                             foregroundColor: _highlightedButton == 'People' ? Colors.black : Colors.grey,
@@ -108,13 +114,8 @@ class _ExploreAppBarState extends State<ExploreAppBar> {
                               overlayColor: MaterialStateProperty.all(Colors.transparent),
                           ),
                           child: const Text('People'),
-                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: TextButton(
+                    TextButton(
                           onPressed: () => _onButtonPressed('Clubs', '/clubs'),
                           style: TextButton.styleFrom(
                             foregroundColor: _highlightedButton == 'Clubs' ? Colors.black : Colors.grey,
@@ -131,12 +132,7 @@ class _ExploreAppBarState extends State<ExploreAppBar> {
                           ),
                           child: const Text('Clubs'),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: TextButton(
+                    TextButton(
                           onPressed: () => _onButtonPressed('Tags', '/tags'),
                           style: TextButton.styleFrom(
                             foregroundColor: _highlightedButton == 'Tags' ? Colors.black : Colors.grey,
@@ -153,19 +149,23 @@ class _ExploreAppBarState extends State<ExploreAppBar> {
                           ),
                           child: const Text('Tags'),
                         ),
-                      ),
-                    ),
                   ],
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [TextFieldSample()],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - 40,
+                    ),
+                    child: const TextFieldSample(),
+                  ),
                 ),
-        ],
+              ],
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 }
 
@@ -174,17 +174,32 @@ class TextFieldSample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      width: 250,
-      height: 80,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: TextField(
+        style: AppTextStyles.h3.copyWith(fontSize: 10),
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey),
+          ),
+          enabledBorder: OutlineInputBorder(  // Border when not focused
+            borderSide: BorderSide(color: Colors.grey[400]!),
+          ),
+          focusedBorder: OutlineInputBorder(  // Border when focused
+            borderSide: BorderSide(color: Colors.grey[400]!),
+          ),
           labelText: 'What are you thinking about?',
+          labelStyle: AppTextStyles.h3.copyWith(
+            color: Colors.grey,
+            fontSize: 10),
         ),
       ),
     );
   }
 }
+
+
+
+
 
 
