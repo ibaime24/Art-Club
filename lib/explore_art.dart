@@ -14,38 +14,41 @@ class ExploreArtPage extends StatefulWidget {
 class _ExploreArtPageState extends State<ExploreArtPage> {
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final appBarHeight = screenHeight * 0.2;
+
     return Scaffold(
-      appBar: const ExploreAppBar(),
       backgroundColor: Colors.white,
-              body: Padding(
+      body: CustomScrollView(
+        slivers: [
+          const ExploreAppBar(),
+          SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 62),
-            child: MasonryGridView.builder(
-                itemCount: 5,
-                gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemBuilder: (context, index) => Container( // Add Container
-                  margin: const EdgeInsets.all(8),
-                  decoration: BoxDecoration( // Add decoration
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [ // Optional: adds subtle shadow
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 5,
-                        spreadRadius: 1,
-                      ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      'images/index$index.jpg',
-                      fit: BoxFit.cover, // Ensures image fills the space
+            sliver: SliverMasonryGrid.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8,
+              childCount: 5,
+              itemBuilder: (context, index) => Container(
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 5,
+                      spreadRadius: 1,
                     ),
-                  ),
+                  ],
                 ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    'images/index$index.jpg',
+                    fit: BoxFit.cover,
+                  ),),)
             ),
-        ),
+        ),],),
         bottomNavigationBar: const BottomNavBar(),
     );//scaffold
   }
