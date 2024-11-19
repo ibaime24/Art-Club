@@ -9,10 +9,18 @@ class Exploretagspage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: ExploreAppBar(),
-      bottomNavigationBar: BottomNavBar(),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: CustomScrollView(
+        slivers: [
+          const ExploreAppBar()
+        ],
+      ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
+
+
+
 
