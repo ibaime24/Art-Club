@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+//import '/text_styles.dart';
+import 'explore_art.dart';
 
 
 
@@ -20,6 +22,16 @@ class BottomNavBar extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: false,
           showUnselectedLabels: false,
+          currentIndex: 0,
+          onTap: (index) {
+            if (index == 1) {
+              Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => ExploreArtPage())
+                );
+            };
+            //all other buttons (indeces) do nothing
+          },
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -35,7 +47,7 @@ class BottomNavBar extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                'assets/icons/saved.svg',
+                'assets/icons/home.svg',
               color: Colors.black,
               height: 40),
               label: 'test'
@@ -44,7 +56,8 @@ class BottomNavBar extends StatelessWidget {
               icon: SvgPicture.asset(
                 'assets/icons/profile.svg',
               color: Colors.black,
-              height: 40),
+              height: 24,
+              width: 24),
               label: 'test'
             ),
           ]
