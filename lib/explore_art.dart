@@ -49,7 +49,7 @@ class _ExploreArtPageState extends State<ExploreArtPage> {
                   ),),)
             ),
         ),],),
-        bottomNavigationBar: const BottomNavBar(),
+        bottomNavigationBar:  BottomNavBar(),
     );//scaffold
   }
 }
