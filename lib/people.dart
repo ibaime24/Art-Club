@@ -15,7 +15,7 @@ class Explorepeoplepage extends StatelessWidget {
           const ExploreAppBar()
         ],
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar:  BottomNavBar(),
     );
   }
 }
