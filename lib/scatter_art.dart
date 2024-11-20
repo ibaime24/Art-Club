@@ -203,7 +203,7 @@ class ScatterArtPage extends StatelessWidget {
           ),        
         ],
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar:  BottomNavBar(),
     );
   }
 }
