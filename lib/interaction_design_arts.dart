@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'bottom_nav_bar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'text_styles.dart';
+import 'scatter_art.dart';
 
 class InteractionDesignArts extends StatelessWidget {
   const InteractionDesignArts ({super.key});
@@ -59,12 +60,46 @@ class InteractionDesignArts extends StatelessWidget {
                         ],
                         ),
                       ),
+                      
                   ],
                 )
               ),
+          //link button start
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ScatterArtPage()),
+                  );
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  padding: EdgeInsets.symmetric(vertical: verticalSpacing),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Center(
+                  child: Text(
+                    'View Scatter Art',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          //link button end
+
           SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-            sliver: SliverMasonryGrid.count(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+          sliver: SliverMasonryGrid.count(
               crossAxisCount: 2,
               mainAxisSpacing: gridSpacing,
               crossAxisSpacing: gridSpacing,
@@ -90,7 +125,10 @@ class InteractionDesignArts extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ]));
+        ),
+        ]
+      ),
+      bottomNavigationBar:  BottomNavBar(),
+    );
   }
 }
