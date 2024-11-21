@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 //import '/text_styles.dart';
 import 'explore_art.dart';
+import 'untitled_no_207.dart';
 
 
 
@@ -24,8 +25,13 @@ class BottomNavBar extends StatelessWidget {
           showUnselectedLabels: false,
           currentIndex: 0,
           onTap: (index) {
-            if (index == 1) {
+            if (index == 0) { //home button ( links to untitled no 207)
               Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => UntitledArt())
+                );
+          } else if (index == 1) { //gallery button
+            Navigator.push(
                 context, 
                 MaterialPageRoute(builder: (context) => ExploreArtPage())
                 );
