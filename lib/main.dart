@@ -5,6 +5,7 @@ import 'package:arthub_demo/scatter_art.dart';
 import 'package:flutter/material.dart';
 import 'package:arthub_demo/people.dart';
 import 'package:arthub_demo/tags.dart';
+import 'untitled_no_207.dart';
 
 
 
@@ -19,7 +20,9 @@ class ArthubApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: 'untitledart',
       routes: {
+        'untitledart': (context) => const UntitledArt(),
         '/': (context) => const ExploreArtPage(),
         '/clubs': (context) => const Clubspage(),
         '/interaction-design-arts': (context) => const InteractionDesignArts(),
