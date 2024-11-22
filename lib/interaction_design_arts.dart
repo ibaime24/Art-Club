@@ -129,6 +129,7 @@ class InteractionDesignArts extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
