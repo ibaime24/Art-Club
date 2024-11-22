@@ -3,6 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'text_styles.dart';
 import 'second_explore_bar.dart';
 import 'scatter_art.dart'; 
+import 'package:arthub_demo/bottom_nav_bar.dart';
 
 class InteractionDesignArts extends StatelessWidget {
   const InteractionDesignArts({super.key});
@@ -15,9 +16,11 @@ class InteractionDesignArts extends StatelessWidget {
     
     // Responsive height and spacing based on screen size
     final idaHeight = screenHeight * 0.2; // 20% of screen height for image height
-    final horizontalPadding = screenWidth * 20 / 393; // 5% padding on both sides
-    final verticalSpacing = screenHeight * 0.02; // 2% vertical spacing for general use
     final gridSpacing = screenWidth * 0.01; // 1% spacing between grid items
+    //(not used bc Ian set custom pixels for margins):
+    final horizontalPadding = screenWidth * 0.05; // 5% padding on both sides 
+    final verticalSpacing = screenHeight * 0.02; // 2% vertical spacing for general use
+    
 
     // gallery images
     final List<String> galleryImages = [
@@ -50,7 +53,7 @@ class InteractionDesignArts extends StatelessWidget {
                   SizedBox(height: 15),
                   // Title: Interaction Design Arts
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                    padding: EdgeInsets.symmetric(horizontal: 0),
                     child: Text(
                       'Interaction Design Arts',
                       style: AppTextStyles.h1, 
@@ -58,7 +61,7 @@ class InteractionDesignArts extends StatelessWidget {
                   ),
                   // no padding between title and subtitle
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                    padding: EdgeInsets.symmetric(horizontal: 0),
                     child: Text(
                       'Practice led, experimental course taught at UAL’s London College of Communication',
                       style: AppTextStyles.h3,
@@ -67,7 +70,7 @@ class InteractionDesignArts extends StatelessWidget {
 
                   // Gallery and Members banner
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: verticalSpacing),
+                    padding: EdgeInsets.symmetric(vertical: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -84,7 +87,7 @@ class InteractionDesignArts extends StatelessWidget {
             ),
             // SliverPadding for the staggered grid layout
             SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              padding: EdgeInsets.symmetric(horizontal: 0),
               sliver: SliverMasonryGrid.count(
                 crossAxisCount: 2, 
                 mainAxisSpacing: gridSpacing,
