@@ -23,7 +23,7 @@ class _ExploreArtPageState extends State<ExploreArtPage> {
         slivers: [
           const ExploreAppBar(),
           SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 62),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             sliver: SliverMasonryGrid.count(
               crossAxisCount: 2,
               mainAxisSpacing: 8,
@@ -32,7 +32,7 @@ class _ExploreArtPageState extends State<ExploreArtPage> {
               itemBuilder: (context, index) => Container(
                 margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(5),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1),
@@ -42,7 +42,7 @@ class _ExploreArtPageState extends State<ExploreArtPage> {
                   ],
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(5),
                   child: Image.asset(
                     'images/index$index.jpg',
                     fit: BoxFit.cover,
